@@ -1,0 +1,13 @@
+resource;max_yearly_energy_export;max_yearly_energy_import
+electricity;0;0
+hydrogen;0;0
+methane;0;
+coal;0;
+lignite;0;0
+uranium;0;
+light_oil;0;
+heavy_oil;0;
+reservoir_h2o;0;0
+pondage_h2o;0;0
+ev_demand;0;0
+hp_demand;0;0

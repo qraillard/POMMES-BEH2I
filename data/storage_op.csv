@@ -1,0 +1,17 @@
+storage_tech;year_op;fixed_cost_energy;fixed_cost_power;dissipation
+battery;2030;;8100.0;0.00004
+battery;2035;;8100.0;0.00004
+battery;2040;;8700.0;0.00004
+battery;2050;;9200.0;0.00004
+PHS;2030;;8507.0;
+PHS;2035;;8507.0;
+PHS;2040;;8507.0;
+PHS;2050;;8507.0;
+h2_tank;2030;;531.7;
+h2_tank;2035;;531.7;
+h2_tank;2040;;531.7;
+h2_tank;2050;;425.36;
+salt_cavern;2030;;;
+salt_cavern;2035;;;
+salt_cavern;2040;;;
+salt_cavern;2050;;;

@@ -1,0 +1,4 @@
+transport_tech;invest_cost;life_span;finance_rate;early_decommissioning;annuity_perfect_foresight
+hvac;636000;50;0.05;1;0
+hvdc;636000;50;0.05;1;0
+h2_pipeline;49000;50;0.075;0;0

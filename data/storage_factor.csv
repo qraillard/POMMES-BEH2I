@@ -1,0 +1,9 @@
+storage_tech;resource;storage_factor_in;storage_factor_out;storage_factor_keep
+battery;electricity;-1.0;0.91;
+PHS;electricity;-1.33;1.0;
+h2_tank;hydrogen;-1.0;1.0;
+h2_tank;electricity;-0.13;;
+hydro_reservoir_volume;reservoir_h2o;-1.0;1.0;
+hydro_pondage_volume;pondage_h2o;-1.0;1.0;
+salt_cavern;hydrogen;-1.0;0.99;
+salt_cavern;electricity;;-0.0099;

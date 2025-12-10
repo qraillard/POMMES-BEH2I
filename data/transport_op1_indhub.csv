@@ -1,0 +1,6 @@
+transport_tech;fixed_cost;hurdle_costs
+hvac;12720;0.01
+hvdc;12720;0.01
+h2_pipeline;980;0.01
+local_tso;29361.2;2.73
+local_biogas;0;0
