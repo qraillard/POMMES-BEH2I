@@ -9,6 +9,6 @@ POMMES-BEH2I was developed to study electricity and hydrogen capacity expansion 
 + EHB - European Hydrogen Backbone
 + EHB+I - European Hydrogen Backbone allowing for extra-european imports
 
-With a focus on Belgium, the dataset provides a setting redispatching hydrogen demand in Belgium among different hydrogen consuming industry clusters to assess the impact on results of an increase in spatial granularity.
+With a focus on Belgium, the dataset provides as well another case redispatching hydrogen demand in Belgium among different hydrogen consuming industry clusters to assess the impact of an increase in spatial granularity.
 
 ![image](readme_images/merged_maps.png)
