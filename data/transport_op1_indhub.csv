@@ -1,6 +1,3 @@
-transport_tech;fixed_cost;hurdle_costs
-hvac;12720;0.01
-hvdc;12720;0.01
-h2_pipeline;980;0.01
-local_tso;29361.2;2.73
-local_biogas;0;0
+version https://git-lfs.github.com/spec/v1
+oid sha256:6a2d3cbeac02479b442b049dad75ab857afa69b7738ae455824b6c8a640db8a9
+size 138

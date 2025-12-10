@@ -1,13 +1,3 @@
-resource;max_yearly_energy_export;max_yearly_energy_import
-electricity;0;0
-hydrogen;0;
-methane;0;
-coal;0;
-lignite;0;0
-uranium;0;
-light_oil;0;
-heavy_oil;0;
-reservoir_h2o;0;0
-pondage_h2o;0;0
-ev_demand;0;0
-hp_demand;0;0
+version https://git-lfs.github.com/spec/v1
+oid sha256:00a5f774798c51532a7eefb1387db83adbc4c2aeef4387556ee6f927e946f9f7
+size 230

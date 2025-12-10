@@ -1,6 +1,3 @@
-transport_tech;invest_cost;life_span;finance_rate;early_decommissioning;annuity_perfect_foresight
-hvac;636000;50;0.05;1;0
-hvdc;636000;50;0.05;1;0
-h2_pipeline;49000;50;0.075;0;0
-local_tso;0;50;0.05;1;0
-local_biogas;0;50;0.05;1;0
+version https://git-lfs.github.com/spec/v1
+oid sha256:ba26141f908fb4b82f4ce4f0b8afa0895608acf8fe21c28e9bc3f49858e6f6da
+size 234
