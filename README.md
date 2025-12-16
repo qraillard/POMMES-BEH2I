@@ -4,7 +4,7 @@ This repository presents running code and input data for a European electricity 
 The framework enables to minimise the system costs to meet the energy services demand by modelling the investment
 and operating costs of energy conversion, storage and transport technologies.
 
-POMMES-BEH2I was developed to study electricity and hydrogen capacity expansion in production and storage technologies under different hydrogen infrastructure settings. Thus, the dataset includes 3 scenarios :
+POMMES-BEH2I was built upon the [POMMES-EU repository](https://github.com/qraillard/POMMES-EU) and developed to study electricity and hydrogen capacity expansion in production and storage technologies under different hydrogen infrastructure settings. Thus, the dataset includes 3 scenarios :
 + ISO - Isolated Hydrogen Systems
 + EHB - European Hydrogen Backbone
 + EHB+I - European Hydrogen Backbone allowing for extra-european imports
