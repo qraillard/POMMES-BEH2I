@@ -8,6 +8,7 @@ import warnings
 import time
 from datetime import timedelta
 import getopt, sys
+import os
 
 warnings.filterwarnings("ignore")
 
@@ -17,11 +18,12 @@ all_areas=['AL', 'AT', 'BA', 'BE', 'BG', 'CH', 'CZ', 'DE', 'DK', 'EE', 'ES',
 ###
 # Default parameters
 ###
-solver = "cplex"  # gurobi, cplex, mosek, highs
+solver = "gurobi"  # gurobi, cplex, mosek, highs
 threads = 4
 h2_mr=False
 daily_h2_demand=False
 industry_hubs=False
+methane_based_h2_ramping=True
 belgian_backbone_setting=0
 config_file="config.yaml"
 areas=["BE","NL","FR","DE","UK","LU","ES","PT","IT","CH","IE","DK","NO","SE","SI","PL",
@@ -29,8 +31,8 @@ areas=["BE","NL","FR","DE","UK","LU","ES","PT","IT","CH","IE","DK","NO","SE","SI
 ##########################
 args = sys.argv[1:]
 # print(args)
-options = "s:c:t:n:mdhb:"
-long_options = ["solver", "config_file", "threads","nodes","must_run_h2","daily_h2_demand","hubs_industry","belgian_backbone_setting"]
+options = "s:c:t:n:mdhb:r:"
+long_options = ["solver", "config_file", "threads","nodes","must_run_h2","daily_h2_demand","hubs_industry","belgian_backbone_setting","methane_based_h2_ramping"]
 go=True
 try:
     arguments, values = getopt.getopt(args, options, long_options)
@@ -54,6 +56,16 @@ try:
         elif currentArg in ("-d", "--daily_h2_demand"):
             daily_h2_demand=True
             print("Daily hydrogen demand set")
+
+        elif currentArg in ("-r", "--methane_based_h2_ramping"):
+            if int(currentVal)==1:
+                methane_based_h2_ramping=True
+            elif int(currentVal)==0:
+                methane_based_h2_ramping = False
+            else:
+                print("Wrong ramping option")
+                go=False
+
         elif currentArg in ("-h", "--hubs_industry"):
             industry_hubs=True
             areas+=["Liege","AlbertCanal","Charleroi","Antwerp","Ghent","Tournai_Mons"]
@@ -110,6 +122,8 @@ if __name__ == "__main__" and go:
             suffix+='-h2_mr'
         if daily_h2_demand:
             suffix+='-daily_h2_demand'
+        if not methane_based_h2_ramping:
+            suffix+='-no_smr_ramping'
         if industry_hubs:
             suffix+=f"-bhb_{belgian_backbone_setting}"
 
@@ -206,6 +220,13 @@ if __name__ == "__main__" and go:
 
 
         model_parameters = build_input_parameters(config)
+
+        if not methane_based_h2_ramping:
+            model_parameters.conversion_ramp_up.loc[dict(conversion_tech=["atr_ccs","smr","e_smr"])]=np.nan
+            model_parameters.conversion_ramp_down.loc[dict(conversion_tech=["atr_ccs", "smr", "e_smr"])] = np.nan
+
+
+
         model_parameters = check_inputs(model_parameters)
 
         print("\033[1m Model building \033[0m")
@@ -248,13 +269,12 @@ if __name__ == "__main__" and go:
                 converge = False
         if converge:
             print("\033[1m Results export \033[0m")
-            save_solution(
-                model=model,
-                output_folder=output_folder,
-                save_model=False,
-                export_csv=False,
-                model_parameters=model_parameters,
-            )
+            if not os.path.exists(f"{output_folder}/"):
+                os.makedirs(f"{output_folder}/")
+
+            model_parameters.to_netcdf(f"{output_folder}/input.nc",format="NETCDF4",engine="h5netcdf")
+            model.constraints.dual.operation_adequacy_constraint.to_netcdf(f"{output_folder}/dual.nc", engine="h5netcdf")
+            model.solution.to_netcdf(f"{output_folder}/solution.nc")
 
             elapsed_time = time.time() - start
             print("Process took {}".format(timedelta(seconds=elapsed_time)))
